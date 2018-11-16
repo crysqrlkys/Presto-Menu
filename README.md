@@ -12,3 +12,75 @@ Django is a web framework in python. I chose it because of:
 
 ## Frameworks and packages
 1. DRF - fast and convinient way to start your API
+2. drf-nested-routers - to create flexible routs 
+
+## How to use
+Database is empty by default so you should add some instances through django admin web interface  
+All methods provided by API are read-only  
+```
+GET /restaurants/  
+GET /restaurants/<id>/  
+GET /restaurants/<id>/item
+```
+
+## Response examples
+
+GET /restaurants/
+```json
+[
+    {
+        "id": 1,
+        "title": "KFC",
+        "address": "somewhere"
+    },
+    {
+        "id": 2,
+        "title": "Burger King",
+        "address": "anywhere"
+    }
+]
+```
+GET /restaurants/1/item/
+```json
+[
+    {
+        "id": 1,
+        "title": "Burger",
+        "cost": 20,
+        "modifiers": [
+            {
+                "id": 1,
+                "title": "Sauce",
+                "parent": null,
+                "children": [
+                    {
+                        "id": 3,
+                        "title": "Curry",
+                        "parent": 1,
+                        "children": []
+                    },
+                    {
+                        "id": 4,
+                        "title": "Ketchup",
+                        "parent": 1,
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Drink",
+        "cost": 15,
+        "modifiers": [
+            {
+                "id": 2,
+                "title": "Ice",
+                "parent": null,
+                "children": []
+            }
+        ]
+    }
+]
+```
