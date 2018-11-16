@@ -14,6 +14,12 @@ Django is a web framework in python. I chose it because of:
 1. DRF - fast and convinient way to start your API
 2. drf-nested-routers - to create flexible routs 
 
+## Trade-offs
+* I would provide some initial data for database
+* I would create dockerfiles for database and application to ease installation
+* I would provide crud operations for API
+* I would use `django-mptt` to make retrieval of this tree structure efficient and cost less time/query requests
+
 ## Installation
 1. Clone repository
 2. Create empty postgresql database named `presto`
@@ -23,6 +29,9 @@ Django is a web framework in python. I chose it because of:
 6. Migrate `./manage.py migrate`
 7. Create super user `./manage.py createsuperuser`
 8. Run server `./manage.py runserver`
+
+## Tests
+Tests are run by django `./manage.py test`
 
 ## How to use
 Database is empty by default so you should add some instances through django admin web interface  
